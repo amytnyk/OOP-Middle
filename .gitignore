@@ -6,6 +6,9 @@ target/
 !**/src/test/**/target/
 frontend
 
+package.json
+package-lock.json
+tsconfig.json
 *.ts
 
 ### STS ###
