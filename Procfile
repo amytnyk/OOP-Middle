@@ -1,0 +1,1 @@
+web: java -Dserver.port=$PORT -jar target/oop-middle-0.0.1-SNAPSHOT.jar
