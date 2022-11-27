@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-@Theme(variant = Lumo.DARK)
+@Theme(themeClass = Lumo.class, variant = Lumo.DARK)
 @JsModule("@vaadin/vaadin-lumo-styles/presets/compact.js")
 public class OopMiddleApplication implements AppShellConfigurator {
 
