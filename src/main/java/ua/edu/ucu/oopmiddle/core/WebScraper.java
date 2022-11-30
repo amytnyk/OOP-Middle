@@ -18,7 +18,7 @@ public class WebScraper {
                 .twitterURL("https://twitter.com/" + domain)
                 .facebookURL("https://facebook.com/" + domain)
                 .address("Boston")
-                .logo(null)
+                .logo(getClass().getClassLoader().getResourceAsStream("assets/default_logo.png"))
                 .build();
     }
 }
