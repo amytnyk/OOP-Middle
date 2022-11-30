@@ -70,7 +70,7 @@
         <plugins><plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-resources-plugin</artifactId>
-            <version>3.2.0</version>
+            <version>3.1.0</version>
         </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -91,7 +91,11 @@
         <profile>
             <id>production</id>
             <build>
-                <plugins>
+                <plugins><plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.1.0</version>
+                </plugin>
                     <plugin>
                         <groupId>com.vaadin</groupId>
                         <artifactId>vaadin-maven-plugin</artifactId>
