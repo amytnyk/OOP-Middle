@@ -17,6 +17,8 @@
         <java.version>19</java.version>
         <vaadin.version>23.2.7</vaadin.version>
         <ginkgo-version>1.0.14</ginkgo-version>
+        <maven.compiler.target>19</maven.compiler.target>
+        <maven.compiler.source>19</maven.compiler.source>
     </properties>
     <dependencies>
         <dependency>
