@@ -1,5 +1,6 @@
 package ua.edu.ucu.oopmiddle.views;
 
+import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.H2;
@@ -19,6 +20,8 @@ public class MainView extends VerticalLayout {
         Button searchButton = new Button("Search");
         searchButton.addClickListener(event ->
                 searchButton.getUI().ifPresent(ui -> ui.navigate(CompanyView.class, domainTextField.getValue())));
+
+        searchButton.addClickShortcut(Key.ENTER);
 
         FormLayout formLayout = new FormLayout();
         formLayout.add(

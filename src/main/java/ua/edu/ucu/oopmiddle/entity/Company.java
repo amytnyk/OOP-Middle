@@ -1,20 +1,18 @@
 package ua.edu.ucu.oopmiddle.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
 @NoArgsConstructor
-@Table
+@Builder
 public class Company {
     @Id
-    @GeneratedValue
-    private Long id;
+    private String domain;
 
     private String name;
     private String employees;
