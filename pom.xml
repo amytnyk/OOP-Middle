@@ -14,7 +14,6 @@
     <name>oop-middle</name>
     <description>Demo project for Spring Boot</description>
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>19</java.version>
         <vaadin.version>23.2.7</vaadin.version>
         <ginkgo-version>1.0.14</ginkgo-version>
@@ -67,6 +66,14 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
