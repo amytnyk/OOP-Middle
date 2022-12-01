@@ -1,5 +1,10 @@
 package ua.edu.ucu.oopmiddle.core;
 
+import com.vaadin.flow.server.VaadinService;
+import org.apache.catalina.webresources.FileResource;
+
+import java.io.File;
+
 public class WebScraper {
     public CompanyInfo fetchCompanyInfo(String domain) {
 //        Document doc = Jsoup.connect("https://ucu.edu.ua")
@@ -13,7 +18,7 @@ public class WebScraper {
                 .twitterURL("https://twitter.com/" + domain)
                 .facebookURL("https://facebook.com/" + domain)
                 .address("Boston")
-                .logo(getClass().getClassLoader().getResourceAsStream("/images/default_logo.png"))
+                .logo(VaadinService.getCurrent().getResourceAsStream("/WEB-INF/images/default_logo.png"))
                 .build();
     }
 }
