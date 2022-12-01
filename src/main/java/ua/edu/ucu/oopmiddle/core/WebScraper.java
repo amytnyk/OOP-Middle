@@ -1,11 +1,5 @@
 package ua.edu.ucu.oopmiddle.core;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-
 public class WebScraper {
     public CompanyInfo fetchCompanyInfo(String domain) {
 //        Document doc = Jsoup.connect("https://ucu.edu.ua")
@@ -19,7 +13,7 @@ public class WebScraper {
                 .twitterURL("https://twitter.com/" + domain)
                 .facebookURL("https://facebook.com/" + domain)
                 .address("Boston")
-                .logo(getClass().getClassLoader().getResourceAsStream("assets/default_logo.png"))
+                .logo(getClass().getClassLoader().getResourceAsStream("/images/default_logo.png"))
                 .build();
     }
 }
