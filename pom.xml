@@ -59,7 +59,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
     <build>
         <plugins>
             <plugin>
@@ -71,6 +70,7 @@
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
                         </exclude>
+                        <exclude>**/default_logo.png</exclude>
                     </excludes>
                 </configuration>
             </plugin>
