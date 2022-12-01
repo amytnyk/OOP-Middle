@@ -20,7 +20,6 @@ public class Company {
     private String facebookURL;
     private String twitterURL;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "logo")
-    private Logo logo;
+    @Lob
+    private byte[] logo;
 }

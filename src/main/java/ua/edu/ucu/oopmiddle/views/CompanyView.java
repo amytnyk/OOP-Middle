@@ -10,8 +10,11 @@ import com.vaadin.flow.router.BeforeEvent;
 import com.vaadin.flow.router.HasUrlParameter;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.StreamResource;
+import org.springframework.core.io.ByteArrayResource;
 import ua.edu.ucu.oopmiddle.entity.Company;
 import ua.edu.ucu.oopmiddle.service.CompanyService;
+
+import java.io.ByteArrayInputStream;
 
 @Route("")
 public class CompanyView extends VerticalLayout implements HasUrlParameter<String> {
@@ -30,9 +33,8 @@ public class CompanyView extends VerticalLayout implements HasUrlParameter<Strin
         backButton.addClickShortcut(Key.ESCAPE);
         Company company = companyService.getCompany(domain);
 
-        Image logo = new Image(new StreamResource("image.png", () ->
-                companyService.getLogoImage(company.getLogo())
-        ), "img");
+        Image logo = new Image(new StreamResource("logo.png",
+                () -> new ByteArrayInputStream(company.getLogo())), "logo");
         logo.setMaxWidth("500px");
         logo.setMaxHeight("500px");
 

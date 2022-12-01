@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RestController;
 import ua.edu.ucu.oopmiddle.entity.Company;
 import ua.edu.ucu.oopmiddle.service.CompanyService;
 
-import java.io.IOException;
 import java.util.AbstractMap;
 import java.util.Map;
 

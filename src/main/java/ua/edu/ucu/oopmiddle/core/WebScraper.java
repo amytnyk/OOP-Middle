@@ -14,6 +14,7 @@ public class WebScraper {
         return CompanyInfo.builder()
                 .domain(domain)
                 .name(domain)
+
                 .employees("100-200")
                 .twitterURL("https://twitter.com/" + domain)
                 .facebookURL("https://facebook.com/" + domain)

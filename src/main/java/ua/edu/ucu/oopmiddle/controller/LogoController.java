@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import ua.edu.ucu.oopmiddle.service.CompanyService;
 
-import java.io.IOException;
+import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/api/v1/logo")
@@ -19,7 +19,8 @@ public class LogoController {
     }
 
     @RequestMapping(path = "/{domain}", method = RequestMethod.GET, produces = MediaType.IMAGE_PNG_VALUE)
-    byte[] getLogo(@PathVariable String domain) throws IOException {
-        return companyService.getLogoByDomain(domain).readAllBytes();
+    byte[] getLogo(@PathVariable String domain, HttpServletResponse response) {
+        response.setHeader("Content-Disposition", "inline");
+        return companyService.getLogoByDomain(domain);
     }
 }
