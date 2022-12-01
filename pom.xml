@@ -95,6 +95,7 @@
                                     <goal>build-frontend</goal>
                                 </goals>
                                 <configuration>
+                                    <javaResourceFolder>${project.basedir}/src/main/resources</javaResourceFolder>
                                     <productionMode>true</productionMode>
                                 </configuration>
                             </execution>
