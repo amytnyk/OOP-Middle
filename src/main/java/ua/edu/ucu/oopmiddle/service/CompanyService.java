@@ -1,5 +1,6 @@
 package ua.edu.ucu.oopmiddle.service;
 
+import com.vaadin.flow.spring.annotation.VaadinSessionScope;
 import org.springframework.stereotype.Service;
 import ua.edu.ucu.oopmiddle.core.CompanyInfo;
 import ua.edu.ucu.oopmiddle.core.WebScraper;
