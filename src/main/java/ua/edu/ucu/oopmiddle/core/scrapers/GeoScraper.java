@@ -15,9 +15,8 @@ import java.io.IOException;
 public class GeoScraper implements Scraper {
     @Override
     public void scrapeTo(CompanyInfo companyInfo) {
-        String API_KEY = "AIzaSyAAChbj7SbtD7Mijh7v11nxSN8QgwYaCes";
         GeoApiContext context = new GeoApiContext.Builder()
-                .apiKey(API_KEY)
+                .apiKey(System.getenv("GOOGLE_API_KEY"))
                 .build();
         try {
             PlacesSearchResponse placesSearchResponse = new TextSearchRequest(context)

@@ -13,9 +13,6 @@ public class WebScraper {
         CompanyInfo companyInfo = new CompanyInfo(domain);
         scrapers.forEach(x -> x.scrapeTo(companyInfo));
 
-        if (companyInfo.getLogo() == null)
-            companyInfo.setLogo(getClass().getClassLoader().getResourceAsStream("default_logo.png"));
-
         return companyInfo;
     }
 }

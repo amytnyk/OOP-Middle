@@ -37,12 +37,11 @@ public class BrandfetchScraper implements Scraper {
 
     @Override
     public void scrapeTo(CompanyInfo companyInfo) {
-        String API_KEY = "Bearer DolFt2ECwwYUlZbgg0AOnE01TvNuAgJyN0s2vrct1W4=";
         try {
             URL url = new URL("https://api.brandfetch.io/v2/brands/" + companyInfo.getDomain());
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
-            connection.setRequestProperty("Authorization", API_KEY);
+            connection.setRequestProperty("Authorization", System.getenv("BRANDFETCH_API_KEY"));
             connection.connect();
 
             String data = new String(connection.getInputStream().readAllBytes());

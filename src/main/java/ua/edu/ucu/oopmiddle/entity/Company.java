@@ -22,4 +22,7 @@ public class Company {
 
     @Lob
     private byte[] logo;
+
+    @Lob
+    private byte[] icon;
 }

@@ -25,15 +25,21 @@ public class CompanyService {
         return companyRepository.findById(domain).orElseThrow();
     }
 
-    private byte[] getLogoBytes(InputStream inputStream) {
+    private byte[] getImageBytes(InputStream inputStream) {
         try {
             return inputStream.readAllBytes();
-        } catch (IOException e) {
+        } catch (IOException | NullPointerException e) {
             return "Invalid image".getBytes();
         }
     }
 
     private void createCompany(CompanyInfo companyInfo) {
+        if (companyInfo.getLogo() == null)
+            companyInfo.setLogo(getClass().getClassLoader().getResourceAsStream("default_logo.png"));
+
+        if (companyInfo.getIcon() == null)
+            companyInfo.setIcon(getClass().getClassLoader().getResourceAsStream("default_icon.png"));
+
         Company company = Company.builder()
                 .domain(companyInfo.getDomain())
                 .name(companyInfo.getName())
@@ -41,12 +47,17 @@ public class CompanyService {
                 .facebookURL(companyInfo.getFacebookURL())
                 .employees(companyInfo.getEmployees())
                 .address(companyInfo.getAddress())
-                .logo(getLogoBytes(companyInfo.getLogo()))
+                .logo(getImageBytes(companyInfo.getLogo()))
+                .icon(getImageBytes(companyInfo.getIcon()))
                 .build();
         companyRepository.save(company);
     }
 
     public byte[] getLogoByDomain(String domain) {
         return getCompany(domain).getLogo();
+    }
+
+    public byte[] getIconByDomain(String domain) {
+        return getCompany(domain).getIcon();
     }
 }

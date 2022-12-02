@@ -40,21 +40,32 @@ public class CompanyView extends VerticalLayout implements HasUrlParameter<Strin
         Image logo = new Image(new StreamResource("logo.png",
                 () -> new ByteArrayInputStream(company.getLogo())), "logo");
         logo.setMaxWidth("500px");
+        logo.setMaxHeight("500px");
+
+        Image icon = new Image(new StreamResource("icon.png",
+                () -> new ByteArrayInputStream(company.getIcon())), "icon");
+        icon.setMaxWidth("60px");
+        icon.setMaxHeight("60px");
+        icon.getStyle().set("border-radius", "10px");
 
         InfoView infoView = new InfoView(company);
 
-        HorizontalLayout horizontalLayout = new HorizontalLayout();
-        horizontalLayout.add(logo, infoView);
-        horizontalLayout.setPadding(true);
-        horizontalLayout.setAlignItems(Alignment.CENTER);
-        horizontalLayout.setJustifyContentMode(JustifyContentMode.AROUND);
-        horizontalLayout.setWidthFull();
+        HorizontalLayout horizontalLayoutMain = new HorizontalLayout();
+        horizontalLayoutMain.add(logo, infoView);
+        horizontalLayoutMain.setPadding(true);
+        horizontalLayoutMain.setAlignItems(Alignment.CENTER);
+        horizontalLayoutMain.setJustifyContentMode(JustifyContentMode.AROUND);
+        horizontalLayoutMain.setWidthFull();
 
         H1 title = new H1(company.getDomain());
+        HorizontalLayout horizontalLayoutTitle = new HorizontalLayout();
+        horizontalLayoutTitle.add(title, icon);
+        horizontalLayoutTitle.setSizeUndefined();
+        horizontalLayoutTitle.setAlignItems(Alignment.CENTER);
 
-        add(title, horizontalLayout);
+        add(horizontalLayoutTitle, horizontalLayoutMain);
 
-        setHorizontalComponentAlignment(Alignment.CENTER, title);
+        setHorizontalComponentAlignment(Alignment.CENTER, horizontalLayoutTitle);
         setJustifyContentMode(JustifyContentMode.CENTER);
     }
 }
