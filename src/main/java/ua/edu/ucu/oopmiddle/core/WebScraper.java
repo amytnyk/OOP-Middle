@@ -6,7 +6,7 @@ public class WebScraper {
 //        Document doc = Jsoup.connect("https://ucu.edu.ua")
 //                .userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36")
 //                .get();
-//        InputStream stream = VaadinService.getCurrent().getResourceAsStream("frontend/default_logo.txt");
+//        InputStream stream = VaadinService.getCurrent().getResourceAsStream("frontend/default_logo.png");
         return CompanyInfo.builder()
                 .domain(domain)
                 .name(domain)
@@ -14,7 +14,7 @@ public class WebScraper {
                 .twitterURL("https://twitter.com/" + domain)
                 .facebookURL("https://facebook.com/" + domain)
                 .address("Boston")
-                .logo(getClass().getClassLoader().getResourceAsStream("images/default_logo.txt"))
+                .logo(getClass().getClassLoader().getResourceAsStream("default_logo.png"))
                 .build();
     }
 }
