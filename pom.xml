@@ -15,7 +15,7 @@
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>19</java.version>
-        <vaadin.version>23.2.10</vaadin.version>
+        <vaadin.version>23.2.9</vaadin.version>
         <ginkgo-version>1.0.14</ginkgo-version>
     </properties>
     <dependencies>
