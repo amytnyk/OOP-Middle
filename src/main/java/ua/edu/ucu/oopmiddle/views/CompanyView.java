@@ -3,8 +3,11 @@ package ua.edu.ucu.oopmiddle.views;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H2;
+import com.vaadin.flow.component.html.H5;
 import com.vaadin.flow.component.html.Image;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.BeforeEvent;
 import com.vaadin.flow.router.HasUrlParameter;
@@ -37,8 +40,21 @@ public class CompanyView extends VerticalLayout implements HasUrlParameter<Strin
         Image logo = new Image(new StreamResource("logo.png",
                 () -> new ByteArrayInputStream(company.getLogo())), "logo");
         logo.setMaxWidth("500px");
-        logo.setMaxHeight("500px");
 
-        add(new H2(company.getDomain()), logo);
+        InfoView infoView = new InfoView(company);
+
+        HorizontalLayout horizontalLayout = new HorizontalLayout();
+        horizontalLayout.add(logo, infoView);
+        horizontalLayout.setPadding(true);
+        horizontalLayout.setAlignItems(Alignment.CENTER);
+        horizontalLayout.setJustifyContentMode(JustifyContentMode.AROUND);
+        horizontalLayout.setWidthFull();
+
+        H1 title = new H1(company.getDomain());
+
+        add(title, horizontalLayout);
+
+        setHorizontalComponentAlignment(Alignment.CENTER, title);
+        setJustifyContentMode(JustifyContentMode.CENTER);
     }
 }

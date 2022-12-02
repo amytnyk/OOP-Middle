@@ -14,6 +14,10 @@ import java.io.InputStream;
 public class CompanyInfo {
     private String domain;
 
+    public CompanyInfo(String domain) {
+        this.domain = domain;
+    }
+
     private String name;
     private String employees;
     private String address;
@@ -21,4 +25,5 @@ public class CompanyInfo {
     private String twitterURL;
 
     private InputStream logo;
+    private InputStream icon;
 }
