@@ -1,6 +1,5 @@
 package ua.edu.ucu.oopmiddle.service;
 
-import com.vaadin.flow.spring.annotation.VaadinSessionScope;
 import org.springframework.stereotype.Service;
 import ua.edu.ucu.oopmiddle.core.CompanyInfo;
 import ua.edu.ucu.oopmiddle.core.WebScraper;
@@ -23,18 +22,18 @@ public class CompanyService {
     public Company getCompany(String domain) {
         if (!companyRepository.existsById(domain))
             createCompany(webScraper.fetchCompanyInfo(domain));
-        return companyRepository.findById(domain).orElse(new Company());
+        return companyRepository.findById(domain).orElseThrow();
     }
 
     private byte[] getLogoBytes(InputStream inputStream) {
         try {
             return inputStream.readAllBytes();
         } catch (IOException e) {
-            return new byte[]{};
+            return "Invalid image".getBytes();
         }
     }
 
-    void createCompany(CompanyInfo companyInfo) {
+    private void createCompany(CompanyInfo companyInfo) {
         Company company = Company.builder()
                 .domain(companyInfo.getDomain())
                 .name(companyInfo.getName())
@@ -48,6 +47,6 @@ public class CompanyService {
     }
 
     public byte[] getLogoByDomain(String domain) {
-        return companyRepository.findById(domain).orElseThrow().getLogo();
+        return getCompany(domain).getLogo();
     }
 }

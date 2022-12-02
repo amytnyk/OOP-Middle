@@ -5,8 +5,7 @@ public class WebScraper {
     public CompanyInfo fetchCompanyInfo(String domain) {
 //        Document doc = Jsoup.connect("https://ucu.edu.ua")
 //                .userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36")
-//                .get();
-//        InputStream stream = VaadinService.getCurrent().getResourceAsStream("frontend/default_logo.png");
+//                .get();;
         return CompanyInfo.builder()
                 .domain(domain)
                 .name(domain)
