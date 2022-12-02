@@ -12,7 +12,7 @@ import lombok.SneakyThrows;
 public class GetAddress {
     @SneakyThrows
     public String getAdress(String domen) {
-        String API_KEY = "AIzaSyAAChbj7SbtD7Mijh7v11nxSN8QgwYaCes";
+        String API_KEY = "";
         GeoApiContext context = new GeoApiContext.Builder()
                 .apiKey(API_KEY)
                 .build();
