@@ -13,7 +13,7 @@ import java.util.*;
 public class PDLParser {
     public Map<String, String> getInfo(String domen) throws IOException {
         String API_KEY = "8d9b6eab9428e854aecf2d2b81161cf7e84cd701014d88979fcacbf0666da9e9";
-        String query = URLEncoder.encode("SELECT NAME FROM COMPANY WHERE WEBSITE=" + domen, StandardCharsets.UTF_8);
+        String query = URLEncoder.encode("SELECT NAME FROM COMPANY WHERE WEBSITE='" + domen + "'", StandardCharsets.UTF_8);
         URL url = new URL("https://api.peopledatalabs.com/v5/company/search?sql=" + query);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
