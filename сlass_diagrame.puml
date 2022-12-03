@@ -1,0 +1,119 @@
+@startuml
+package ua.edu.ucu.oopmiddle {
+    package entity {
+        class Company {
+            - String domain
+            - String name
+            - String employees
+            - String address
+            - String facebookURL
+            - String twitterURL
+            - byte[] logo
+            - byte[] icon
+        }
+    }
+
+    package controller {
+        class ImageController {
+            - CompanyService companyService
+            ~ byte[] getLogo(String,HttpServletResponse)
+            ~ byte[] getIcon(String,HttpServletResponse)
+        }
+
+        class CompanyController {
+            - CompanyService companyService
+            ~ Map<String,String> getInfo(String)
+        }
+    }
+
+    package service {
+        class CompanyService {
+            - CompanyRepository companyRepository
+            - WebScraper webScraper
+            + Company getCompany(String)
+            - byte[] getImageBytes(InputStream)
+            - void createCompany(CompanyInfo)
+            + byte[] getLogoByDomain(String)
+            + byte[] getIconByDomain(String)
+        }
+    }
+
+    package views {
+        class CompanyView  extends VerticalLayout implements HasUrlParameter {
+            - CompanyService companyService
+            + void setParameter(BeforeEvent,String)
+        }
+
+        class LinkFieldInfoView  extends Div {
+        }
+
+        class FieldInfoView  extends Div {
+        }
+
+        class InfoView  extends VerticalLayout {
+        }
+
+        class MainView  extends VerticalLayout {
+        }
+    }
+
+    package core {
+        class WebScraper {
+            - List<Scraper> scrapers
+            + CompanyInfo fetchCompanyInfo(String)
+        }
+
+        package scrapers {
+            interface Scraper {
+                ~ void scrapeTo(CompanyInfo)
+            }
+
+            class PDLScraper  implements Scraper {
+                + void scrapeTo(CompanyInfo)
+            }
+
+            class GeoScraper  implements Scraper {
+                + void scrapeTo(CompanyInfo)
+            }
+
+            class BrandfetchScraper  implements Scraper {
+                - InputStream downloadImage(String)
+                - String getSuitableImageSource(JSONObject)
+                + void scrapeTo(CompanyInfo)
+            }
+        }
+
+        class CompanyInfo {
+            - String domain
+            - String name
+            - String employees
+            - String address
+            - String facebookURL
+            - String twitterURL
+            - InputStream logo
+            - InputStream icon
+        }
+    }
+
+    package repository {
+        interface CompanyRepository {
+        }
+    }
+
+    class Config {
+        + WebScraper getWebScraper()
+    }
+
+    class OopMiddleApplication {
+        + {static} void main(String[])
+    }
+}
+
+
+ua.edu.ucu.oopmiddle.views.CompanyView::companyService *-- ua.edu.ucu.oopmiddle.service.CompanyService::class
+ua.edu.ucu.oopmiddle.service.CompanyService::webScraper *-- ua.edu.ucu.oopmiddle.core.WebScraper::class
+ua.edu.ucu.oopmiddle.service.CompanyService::companyRepository o-- ua.edu.ucu.oopmiddle.repository.CompanyRepository::class
+ua.edu.ucu.oopmiddle.service.CompanyService::class --* ua.edu.ucu.oopmiddle.controller.CompanyController::companyService
+ua.edu.ucu.oopmiddle.service.CompanyService::class --* ua.edu.ucu.oopmiddle.controller.ImageController::companyService
+ua.edu.ucu.oopmiddle.core.scrapers.Scraper::class --* ua.edu.ucu.oopmiddle.core.WebScraper::scrapers
+@enduml
