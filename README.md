@@ -16,3 +16,6 @@ We use a chain of responsibility pattern in the process of parsing information a
 We use a separate controller class that accepts and delegates requests from the UI.
 
 This class receives the request and calls the appropriate business logic methods assigned to a separate service class.
+
+### Facade
+Following this pattern, we made a CompanyService class that provides the controller with a simple interface for the complex business logic of the program.
